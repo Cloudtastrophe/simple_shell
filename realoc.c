@@ -1,66 +1,50 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * _memset - Fills memory with a constant byte.
- * @s: Pointer to the memory area.
- * @b: The byte to fill *s with.
- * @n: The number of bytes to be filled.
- *
- * Return: A pointer to the memory area s.
- */
-char *_memset(char *s, char b, unsigned int n)
-{
-	unsigned int i;
-
-	for (i = 0; i < n; i++)
-		s[i] = b;
-	return (s);
-}
-
-/**
- * ffree - Frees a string of strings.
- * @pp: String of strings.
- */
-void ffree(char **pp)
-{
-	char **a = pp;
-
-	if (!pp)
-		return;
-
-	while (*pp)
-		free(*pp++);
-	free(a);
-}
-
-/**
- * _realloc - Reallocates a block of memory.
- * @ptr: Pointer to the previous malloc'ated block.
- * @old_size: Byte size of the previous block.
- * @new_size: Byte size of the new block.
- *
- * Return: Pointer to the old block or a new block.
+ * _realloc - Reallocates a memory block using malloc and free.
+ * @ptr: A pointer to the memory previously allocated.
+ * @old_size: The size, in bytes, of the allocated space for ptr.
+ * @new_size: The new size, in bytes, of the new memory block.
+ * Return: A pointer to the new allocated memory block.
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *p;
+	char *result;
+	unsigned int i = 0;
 
-	if (!ptr)
-		return (malloc(new_size));
-
-	if (!new_size)
-		return (free(ptr), NULL);
-
-	if (new_size == old_size)
+	if (old_size == new_size)
+	{
+		/* If the old and new sizes are the same, no need to reallocate. */
 		return (ptr);
+	}
 
-	p = malloc(new_size);
-	if (!p)
+	if (new_size == 0 && ptr != NULL)
+	{
+		/* If new size is 0 and ptr is not NULL, free the memory and return NULL. */
+		free(ptr);
 		return (NULL);
+	}
 
-	old_size = old_size < new_size ? old_size : new_size;
-	while (old_size--)
-		p[old_size] = ((char *)ptr)[old_size];
+	result = malloc(new_size);
+
+	if (result == NULL)
+	{
+		/* Return NULL if malloc fails to allocate memory. */
+		return (NULL);
+	}
+
+	if (ptr == NULL)
+	{
+		/* If ptr is NULL, return the newly allocated memory. */
+		return (result);
+	}
+
+	while (i < old_size && i < new_size)
+	{
+		/* Copy the content from the old memory block to the new one. */
+		result[i] = ((char *)ptr)[i];
+		i++;
+	}
 	free(ptr);
-	return (p);
+	return (result);
 }

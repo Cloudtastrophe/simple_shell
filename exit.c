@@ -1,78 +1,44 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * _strncpy - Copies a string.
- * @dest: The destination string to be copied to.
- * @src: The source string.
- * @n: The amount of characters to be copied.
- *
- * Return: The concatenated string.
+ * exit_process - Exits the current process
+ * @command: The command to process
+ * @args: The arguments of the command
+ * Return: Process result
  */
-char *_strncpy(char *dest, char *src, int n)
+int exit_process(char *command, char *args[])
 {
-    int i, j;
-    char *s = dest;
+	int exit_arg = 0;
 
-    i = 0;
-    while (src[i] != '\0' && i < n - 1)
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    if (i < n)
-    {
-        j = i;
-        while (j < n)
-        {
-            dest[j] = '\0';
-            j++;
-        }
-    }
-    return (s);
-}
+	(void)(command);
 
-/**
- * _strncat - Concatenates two strings.
- * @dest: The first string.
- * @src: The second string.
- * @n: The amount of bytes to be maximally used.
- *
- * Return: The concatenated string.
- */
-char *_strncat(char *dest, char *src, int n)
-{
-    int i, j;
-    char *s = dest;
+	if (args[1] != NULL)
+	{
+		exit_arg = custom_atoi(args[1]);
 
-    i = 0;
-    j = 0;
-    while (dest[i] != '\0')
-        i++;
-    while (src[j] != '\0' && j < n)
-    {
-        dest[i] = src[j];
-        i++;
-        j++;
-    }
-    if (j < n)
-        dest[i] = '\0';
-    return (s);
-}
+		if (exit_arg == -1)
+		{
+			print_error("%s: %d: %s: Illegal number: %s\n",
+				    name, counter, args[0], args[1]);
+			return (2);
+		}
 
-/**
- * _strchr - Locates a character in a string.
- * @s: The string to be parsed.
- * @c: The character to look for.
- *
- * Return: A pointer to the memory area s.
- */
-char *_strchr(char *s, char c)
-{
-    do
-    {
-        if (*s == c)
-            return (s);
-    } while (*s++ != '\0');
+		free(command);
+		free_recur(args);
+		free_recur(environ);
+		free_alias_list(head);
 
-    return (NULL);
+		if (exit_arg > 255)
+			exit_arg %= 256;
+
+		exit(exit_arg);
+	}
+
+	free(command);
+	free_recur(environ);
+	free_recur(args);
+	free_alias_list(head);
+	exit(exit_status);
+
+	return (0);
 }
