@@ -7,13 +7,6 @@
  */
 int main(void)
 {
-    char betty[] = "Hello, Betty!\n";
-    int i;
-
-    for (i = 0; betty[i] != '\0'; i++)
-    {
-        putchar(betty[i]);
-    }
-
-    return (0);
+    printf("Hello, Betty!\n");
+    return 0;
 }
