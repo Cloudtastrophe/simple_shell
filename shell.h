@@ -1,5 +1,5 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* for read/write buffers */
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
+#define MAX_COMMAND_LENGTH 100
+
+void execute_command(const char *command);
+
+#endif
