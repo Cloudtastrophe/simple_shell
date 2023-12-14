@@ -1,12 +1,20 @@
-#include <stdio.h>
+#include <unistd.h>
 
 /**
  * main - Entry point of the program
  *
+ * Description: This function writes "Hello, Betty!" to the standard output.
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-    printf("Hello, Betty!\n");
-    return 0;
+    char betty[] = "Hello, Betty!\n";
+    int i;
+
+    for (i = 0; betty[i] != '\0'; i++)
+    {
+        write(1, &betty[i], 1);
+    }
+
+    return (0);
 }
