@@ -6,9 +6,9 @@
  * Description: This function prints "Hello, Betty!" to the standard output.
  * Return: Always 0 (Success)
  */
-int main(void)
+int entry(void)
 {
-	printf("Hello, Betty!\n"); /* No spaces at the start of a line */
+	printf("Hello, Betty!\n");
 
-	return (0); /* Parentheses are required on a return statement */
+	return (0);
 }
