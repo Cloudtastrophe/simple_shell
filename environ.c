@@ -108,8 +108,7 @@ int _setenv(char *command, char *args[])
 		print_error("%s: %d: %s: Invalid arguments\n", name, counter, args[0]);
 		return (-1);
 	}
-	env_len = _strlen(args[1]), value_len = _strlen(args[2]);
-	new_variable = malloc(sizeof(char) * (env_len + value_len + 2));
+	env_len = _strlen(args[1]), value_len = _strlen(args[2]);new_variable = malloc(sizeof(char) * (env_len + value_len + 2));
 	if (new_variable == NULL)
 	{
 		print_error("%s: %d: %s: Failed set new variable\n", name, counter, args[0]);
@@ -130,12 +129,13 @@ int _setenv(char *command, char *args[])
 	new_environ = malloc(sizeof(char *) * (index + 2));
 	if (new_environ == NULL)
 	{
-		print_error("%s: %d: %s: Failed to set new variable\n", name, counter, args[0]);
+	print_error
+		("%s: %d: %s: Failed to set new variable\n", name, counter, args[0]);
 		free(new_variable);
 		return (-1);
 	}
 	for (index = 0; environ[index] != NULL; index++)
-		new_environ[index] = environ[index];
+	new_environ[index] = environ[index];
 	free(environ), new_environ[index] = new_variable;
 	new_environ[index + 1] = NULL, environ = new_environ;
 	return (0);
@@ -170,7 +170,8 @@ int _unsetenv(char *command, char *args[])
 
 	if (new_environ == NULL)
 	{
-		print_error("%s: %d: %s: Failed to set new variable\n", name, counter, args[0]);
+	print_error
+		("%s: %d: %s: Failed to set new variable\n", name, counter, args[0]);
 		return (-1);
 	}
 

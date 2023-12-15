@@ -5,8 +5,8 @@
  * @dest: The first string to concatenate.
  * @src: The second string to concatenate.
  * Return: A pointer pointing to a newly allocated space in memory
- *         which contains the contents of dest, followed by the contents of src,
- *         and null-terminated.
+ * which contains the contents of dest, followed by the contents of src,
+ * and null-terminated.
  */
 char *_strcat(char *dest, char *src)
 {
