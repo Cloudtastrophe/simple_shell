@@ -22,12 +22,14 @@ int counter;
 char *name;
 int exit_status;
 alias_list *head;
+
 /**
  * main - Entry point
  * @argc: The number of command line arguments
  * @argv: An array containing the program command line arguments
  * Return: 0
  */
+
 int main(int argc, char *argv[])
 {
 	char *command = NULL, *cmd = NULL, *delim = " \n\t", **args = NULL;
