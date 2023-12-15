@@ -1,14 +1,13 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
- * main - Entry point of the program
+ * entry_point - Entry point of the program
  *
  * Description: This function prints "Hello, Betty!" to the standard output.
  * Return: Always 0 (Success)
  */
-int entry(void)
+int entry_point(void)
 {
-	printf("Hello, Betty!\n");
-
-	return (0);
+    printf("Hello, Betty!\n");
+    return 0;
 }
