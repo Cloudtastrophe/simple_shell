@@ -1,20 +1,14 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
  * main - Entry point of the program
  *
- * Description: This function writes "Hello, Betty!" to the standard output.
+ * Description: This function prints "Hello, Betty!" to the standard output.
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-    char betty[] = "Hello, Betty!\n";
-    int i;
+	printf("Hello, Betty!\n"); /* No spaces at the start of a line */
 
-    for (i = 0; betty[i] != '\0'; i++)
-    {
-        write(1, &betty[i], 1);
-    }
-
-    return (0);
+	return (0); /* Parentheses are required on a return statement */
 }
