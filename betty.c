@@ -8,6 +8,7 @@
  */
 int entry_point(void)
 {
-    printf("Hello, Betty!\n");
-    return 0;
+	printf("Hello, Betty!\n");
+
+	return (0);
 }
