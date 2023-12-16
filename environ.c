@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _envs - Prints all the current running environment variables.
- * @command: Is the command to process.
- * @args: Are the arguments of the command.
- * Return: Process result.
- */
+ * _envs - Prints all the current running environment variables
+ * @command: Is the command to process
+ * @args: Are the arguments of the command
+ * Return: Process result
+*/
 int _envs(char *command, char *args[])
 {
 	int i, len;
@@ -27,10 +27,11 @@ int _envs(char *command, char *args[])
 }
 
 /**
- * _environ - Creates my own copy of environ variable to be able to
- * manipulate freely, for example, set new variable or unset existing variable.
- * Return: void.
- */
+ * **_environ - Creates my own copy of environ variable to be able to
+ * manipulate freely. for example set new variable or unset exixting variable
+ *
+ * Return: void
+*/
 char **_environ(void)
 {
 	int index, j;
@@ -40,7 +41,7 @@ char **_environ(void)
 		return (NULL);
 
 	for (index = 0; environ[index] != NULL; index++)
-		;
+	;
 
 	my_environ = malloc(sizeof(char *) * (index + 1));
 	if (my_environ == NULL)
@@ -66,10 +67,10 @@ char **_environ(void)
 }
 
 /**
- * _getenv - Finds a certain environment variable and returns it.
- * @env_name: Is the name of the variable to look for.
- * Return: The environment variable or NULL if it doesn't exist.
- */
+ * **_getenv - Finds a certain enviornment variable and returns it
+ * @env_name: Is the name of the variable to look for
+ * Return: The environment variable or NULLL id it doesn't exist
+*/
 char *_getenv(char *env_name)
 {
 	int index = 0, env_len = 0;
@@ -79,7 +80,6 @@ char *_getenv(char *env_name)
 
 	if (environ == NULL)
 		return (NULL);
-
 	for (index = 0; environ[index] != NULL; index++)
 	{
 		if (_strncmp(environ[index], env_name, env_len) == 0)
@@ -92,11 +92,11 @@ char *_getenv(char *env_name)
 }
 
 /**
- * _setenv - Sets new environment variable.
- * @command: Is the command to process.
- * @args: Are the arguments of the command.
- * Return: Process result.
- */
+ * _setenv - Sets new environment variable
+ * @command: Is the command to process
+ * @args: Are the arguments of the command
+ * Return: Process result
+*/
 int _setenv(char *command, char *args[])
 {
 	char *new_variable, **new_environ;
@@ -108,7 +108,8 @@ int _setenv(char *command, char *args[])
 		print_error("%s: %d: %s: Invalid arguments\n", name, counter, args[0]);
 		return (-1);
 	}
-	env_len = _strlen(args[1]), value_len = _strlen(args[2]);new_variable = malloc(sizeof(char) * (env_len + value_len + 2));
+	env_len = _strlen(args[1]), value_len = _strlen(args[2]);
+	new_variable = malloc(sizeof(char) * (env_len + value_len + 2));
 	if (new_variable == NULL)
 	{
 		print_error("%s: %d: %s: Failed set new variable\n", name, counter, args[0]);
@@ -129,24 +130,23 @@ int _setenv(char *command, char *args[])
 	new_environ = malloc(sizeof(char *) * (index + 2));
 	if (new_environ == NULL)
 	{
-	print_error
-		("%s: %d: %s: Failed to set new variable\n", name, counter, args[0]);
-		free(new_variable);
+		print_error("%s: %d: %s: Failed to set new variable\n",
+				 name, counter, args[0]), free(new_variable);
 		return (-1);
 	}
 	for (index = 0; environ[index] != NULL; index++)
-	new_environ[index] = environ[index];
+		new_environ[index] = environ[index];
 	free(environ), new_environ[index] = new_variable;
 	new_environ[index + 1] = NULL, environ = new_environ;
 	return (0);
 }
 
 /**
- * _unsetenv - Unsets environment variable.
- * @command: Is the command to process.
- * @args: Are the arguments of the command.
- * Return: Process result.
- */
+ * _unsetenv - Unsets new environment variable
+ * @command: Is the command to process
+ * @args: Are the arguments of the command
+ * Return: Process result
+*/
 int _unsetenv(char *command, char *args[])
 {
 	char **new_environ;
@@ -164,14 +164,14 @@ int _unsetenv(char *command, char *args[])
 
 	del_var_len = _strlen(args[1]);
 	for (index = 0; environ[index] != NULL; index++)
-		;
+	;
 
 	new_environ = malloc(sizeof(char *) * index);
 
 	if (new_environ == NULL)
 	{
-	print_error
-		("%s: %d: %s: Failed to set new variable\n", name, counter, args[0]);
+		print_error("%s: %d: %s: Failed to set new variable\n",
+				 name, counter, args[0]);
 		return (-1);
 	}
 

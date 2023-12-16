@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * _getline - Reads an entire line from a file descriptor,
+ * _getline - Reads  an  entire  line from stream,
  * storing the address of the buffer containing the text into **buf.
- * @buf: The buffer to store the line that has been read
- * @size: The size of the buffer (buf)
- * @fd: The file descriptor to determine where to read from
- * Return: The number of characters that have been read
- * or -1 if the read process has failed
- */
+ * @buf: Is the buffer to store the line that has been read
+ * @size: Is the size of the buffer (buf)
+ * @fd: Is the file descriptor to determine where to read from
+ * Return: The number of character that has been read
+ * or -1 if read process has faild
+*/
 ssize_t _getline(char **buf, size_t *size, int fd)
 {
 	static char buffer[7000];
@@ -54,10 +54,10 @@ ssize_t _getline(char **buf, size_t *size, int fd)
 }
 
 /**
- * open_file - Opens a file.
- * @file_name: The name of the file to open.
- * Return: The file descriptor or -1 if it failed to open the file.
- */
+ * open_file - Opens a file
+ * @file_name: Is the name of the file to open
+ * Return: The file descriptor or -1 if it faild to open the file
+*/
 int open_file(char *file_name)
 {
 	int fd;

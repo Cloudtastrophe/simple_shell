@@ -1,10 +1,9 @@
 #include "main.h"
-
 /**
  * is_alias_to_set - Checks if the argument is an alias to set
- * @arg: The argument to check
- * Return: 1 if it is an alias to set, 0 otherwise
- */
+ * @arg: Is the argument to check
+ * Return: 1 in case it is an alias to set or 0 otherwise
+*/
 int is_alias_to_set(char *arg)
 {
 	int i;
@@ -19,9 +18,10 @@ int is_alias_to_set(char *arg)
 
 /**
  * free_alias_list - Frees an alias_list list.
- * @head: Pointer to the first element of the list
+ * @head: Is a pointer to the first element of the list
  * Return: void
  */
+
 void free_alias_list(alias_list *head)
 {
 	alias_list *prev;
@@ -38,10 +38,10 @@ void free_alias_list(alias_list *head)
 
 /**
  * is_found - Checks whether an alias exists in alias_list list or not
- * @head: Pointer to the first element of the list
- * @name: The name of the alias to check
- * Return: 1 if alias is found, 0 if it is not found
- */
+ * @head: Is a pointer tot he first element of the list
+ * @name: Is the name of the alias to check
+ * Return: if alias is found (1) and if it is not found (0)
+*/
 int is_found(alias_list *head, char *name)
 {
 	alias_list *tmp = head;

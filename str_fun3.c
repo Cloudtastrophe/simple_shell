@@ -1,28 +1,11 @@
 #include "main.h"
-
 /**
- * is_delim - Checks if a character is a delimiter.
- * @c: The character to check.
- * @delim: Delimiter string to compare with.
- * Return: 1 if the character is a delimiter, 0 otherwise.
- */
-int is_delim(char c, char *delim)
-{
-	while (*delim != '\0')
-	{
-		if (*delim == c)
-			return (1);
-		delim++;
-	}
-	return (0);
-}
+ * remove_extra_speaces - Reomves extra spaces or tabs from a string
+ * @str: Is the string to update
+ * Return: The (str) string after removing extra spaces
+*/
 
-/**
- * remove_extra_spaces - Removes extra spaces or tabs from a string.
- * @str: The string to update.
- * Return: The (str) string after removing extra spaces.
- */
-char *remove_extra_spaces(char *str)
+char *remove_extra_speaces(char *str)
 {
 	int i, new_index = 0;
 	char cur, next, *delim = " \t", *next_delim = " \t;|&";
@@ -60,10 +43,10 @@ char *remove_extra_spaces(char *str)
 }
 
 /**
- * remove_quote - Removes quotation marks from a string.
- * @str: The string to update.
- * Return: The (str) string after removing quotation marks.
- */
+ * remove_quote - Reomves quotation marks from a string
+ * @str: Is the string to update
+ * Return: The (str) string after removing quotation marks
+*/
 int remove_quote(char **str)
 {
 	int i, new_index = 0;
@@ -93,12 +76,13 @@ int remove_quote(char **str)
 	return (0);
 }
 
+
 /**
- * trim_delimiters - Deletes leading and ending delimiters.
- * @str: The string to trim its delimiters.
- * @delim: Delimiter string to split the string with.
- * Return: The (str) string after terminating leading and ending delimiters.
- */
+ * trim_delimiters - Deletes leading and ending delimiters
+ * @str: Is the string to trim its delimiters
+ * @delim: Are the delimiters to split the string with
+ * Return: The (str) String after terminating leading and ending delimiters
+*/
 char *trim_delimiters(char *str, char *delim)
 {
 	int str_len;
@@ -143,12 +127,12 @@ char *trim_delimiters(char *str, char *delim)
 }
 
 #include "main.h"
-
 /**
- * int_to_string - Converts an integer to string.
- * @i: The number to convert.
- * Return: String that contains the number as characters.
- */
+* int_to_string - Converts an integer to string
+* @i: Is the number to convert
+* Return: String that contais the number as characters
+*/
+
 char *int_to_string(int i)
 {
 	int number_len = 0;

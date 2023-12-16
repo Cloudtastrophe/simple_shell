@@ -2,9 +2,8 @@
 
 char *check_syntax_error(char *command);
 int check_operator_sperator(char *command, char *operator);
-
 /**
- * check_quote - Checks if the command args inside double quotation
+ * check_quote - Checks if the command args inside double quotaion
  * @cmnd: Is the command to check
  * @ind: Is the current index where the command stopped
  * Return: The updated index of the command
@@ -33,6 +32,7 @@ int check_quote(char **cmnd, int ind)
 /**
  * line_commands - Finds multiple commands in the line and
  * return one command on every call till there are no more commands in line
+ *
  * @command_line: Is the line to fetch its commands
  * Return: Command to be executed
 */
@@ -85,7 +85,7 @@ char *line_commands(char *command_line)
 
 /**
  * check_operator_sperator - Checks for logical operators (|| OR &&)
- * or command separators (;)
+ *  or command sperators (;)
  * @command: Is the command to check
  * @operator: Is a pointer to character to assign the logical operator
  * that the function has encountered with to apply this operator logic
@@ -135,11 +135,13 @@ int check_operator_sperator(char *command, char *operator)
 	return (index);
 }
 
+
 /**
  * check_syntax_error - Checks if the code contains syntax errors
  * @command: Is the command to check
  * Return: The part that caused the error or NULL if there are no errors
 */
+
 char *check_syntax_error(char *command)
 {
 	char next = '\0';
@@ -216,8 +218,8 @@ char *check_syntax_error(char *command)
 }
 
 /**
- * replace_variable - Replaces variables ($) with their values
- * @args: Are the arguments to check for variables
+ * replace_variable - Replaces variables ($) with it values
+ * @args: Are the argument to check for variables
  * Return: void
 */
 void replace_variable(char *args[])
@@ -248,12 +250,10 @@ void replace_variable(char *args[])
 			}
 			else
 			{
-{
 			args[i] = malloc(sizeof(char) * (_strlen(tmp) + 1));
 			_strcpy(args[i], tmp);
-}
+			}
 		}
 		i++;
 	}
-}
 }

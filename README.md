@@ -1,2 +1,1 @@
-# simple_shell
-This is a simple shell project for ALX
+This is an Alx simple shell project written by Ifiemi Williams Igoniseigha
