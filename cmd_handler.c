@@ -256,3 +256,4 @@ void replace_variable(char *args[])
 		i++;
 	}
 }
+}
